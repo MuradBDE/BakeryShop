@@ -53,6 +53,20 @@ namespace CandyShop.Controllers
             db.SaveChanges();
             return RedirectToAction("Goods", "Home");
         }
+        [Authorize]
+        public IActionResult Delete(int id, string act)
+        {
+            //Удаление изображения
+            string fileName = db.Cakes.Single(u => u.Id == id).Image;
+            if (System.IO.File.Exists("wwwroot/Resources/" + fileName))
+            {
+                System.IO.File.Delete("wwwroot/Resources/" + fileName);
+            }
+            //Удаление из базы данных
+            db.Cakes.Remove(db.Cakes.Single(u => u.Id == id));
+            db.SaveChanges();
+            return RedirectToAction(act, "Home");
+        }
 
         public IActionResult Cake(int id)
         {

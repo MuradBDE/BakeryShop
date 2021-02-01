@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<CandyShop.Models.Cake>
 @{
     ViewData["Title"] = "Goods";
+    bool authenticated = User.Identity.IsAuthenticated;
 }
 
 <h1></h1>
@@ -8,20 +9,26 @@
     <div class="row mt-5 mb-5">
         @foreach (var cake in Model)
         {
-        <div class="col-lg-6" name="clickable" >
-            <div style="padding: 30px">
-                <div class="shading">
-                    <a class="cake" asp-action="Cake" , asp-controller="Home" asp-route-id="@cake.Id">
-                        <img class="cake" src="~/Resources/@cake.Image" />
+            <div class="col-lg-6" name="clickable">
+                <div style="padding: 30px">
+                    <div class="shading">
+                        <a class="cake" asp-action="Cake" , asp-controller="Home" asp-route-id="@cake.Id">
+                            <img class="cake" src="~/Resources/@cake.Image" />
+                            <br />
+                            @cake.Name
+                            <p style="font-size: 18px; font-weight:normal;">@cake.ShortDesc</p>
+                        </a>
+                        @if (authenticated)
+                        {
+                            <div class="button" style="position: absolute; right: 10%">
+                                <a style="display:inline-block;" class="btn" asp-action="Delete" asp-controller="Home" asp-route-id="@cake.Id" asp-route-act="Goods">Удалить</a>
+                            </div>
+                        }
                         <br />
-                        @cake.Name
-                        <p style="font-size: 18px; font-weight:normal;">@cake.ShortDesc</p>
-                        <br />
-                    </a>
+                    </div>
+                    <br />
                 </div>
-                <br />
             </div>
-        </div>
         }
     </div>
 
