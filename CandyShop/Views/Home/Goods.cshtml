@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CandyShop.Models.Cake>
+@{
+    ViewData["Title"] = "Goods";
+}
+
+<h1></h1>
+<div id="goods-space">
+    <div class="row mt-5 mb-5">
+        @foreach (var cake in Model)
+        {
+        <div class="col-lg-6" name="clickable" >
+            <div style="padding: 30px">
+                <div class="shading">
+                    <a class="cake" asp-action="Cake" , asp-controller="Home" asp-route-id="@cake.Id">
+                        <img class="cake" src="~/Resources/@cake.Image" />
+                        <br />
+                        @cake.Name
+                        <p style="font-size: 18px; font-weight:normal;">@cake.ShortDesc</p>
+                        <br />
+                    </a>
+                </div>
+                <br />
+            </div>
+        </div>
+        }
+    </div>
+
+</div>
+

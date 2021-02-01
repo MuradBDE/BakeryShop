@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CandyShop.Models.Cake>
+@{
+    ViewData["Title"] = "Cake";
+    var current = Model.FirstOrDefault(u => u.Id == ViewBag.Id);
+    var index = Model.ToList().IndexOf(current);
+}
+<h1>@current.Name</h1>
+<div>
+    <img class="good" src="~/Resources/@current.Image" />
+    <p>@current.ShortDesc</p>
+    <h3>Описание</h3>
+    @foreach (var line in current.LongDesc.Split('\n'))
+    {
+        <p>@line</p>
+    }
+    @if (index > 0)
+    {
+        <div class="button" style="position: absolute; left: 10%">
+            <a style="display:inline-block;" class="btn" asp-action="Cake" asp-controller="Home" asp-route-id="@(Model.ToList().ElementAt(index - 1).Id)">Предыдущий</a>
+        </div>
+    }
+    @if (index < Model.ToList().Count - 1)
+    {
+        <div class="button" style="position: absolute; right: 10%">
+            <a style="display:inline-block;" class="btn" asp-action="Cake" asp-controller="Home" asp-route-id="@(Model.ToList().ElementAt(index + 1).Id)">Следующий</a>
+        </div>
+    }
+    <br />
+    <br />
+</div>
