@@ -109,18 +109,7 @@ img.good {
     border-radius: 20px;
 }
 img.cake {
-    height: 400px;
-    width: 500px;
 }
-    img.cake:hover {
-        height: 410px;
-        width: 525px;
-        transition: all 0.2s ease;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-    }
 
 div.shading {
     box-shadow: 0 0 10px #000000;
@@ -140,9 +129,9 @@ ul.horiz li{
     height:400px;
 }
 
-textarea {
-    width: 400px;
-    height: 150px;
+textarea.inpt {
+    width: 50%;
+    height: 300px;
     overflow-y: scroll;
     resize: none;
 }

@@ -23,7 +23,8 @@ namespace CandyShop.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = db.Cakes.ToList();
+            return View(model);
         }
         public IActionResult Goods()
         {
