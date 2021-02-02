@@ -12,5 +12,6 @@ namespace CandyShop.Models
         public string ShortDesc { get; set; }
         public string LongDesc { get; set; }
         public string Image { get; set; }
+        public int Price { get; set; }
     }
 }

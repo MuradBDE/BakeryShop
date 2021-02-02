@@ -109,6 +109,7 @@ img.good {
     border-radius: 20px;
 }
 img.cake {
+    object-fit: cover;
 }
 
 div.shading {

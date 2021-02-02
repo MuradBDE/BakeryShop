@@ -18,21 +18,21 @@
         <br />
     </div>
     <div>
-        <a class="btn" asp-action="Privacy" , asp-controller="Goods"><h1>Наши изделия</h1></a>
+        <a class="btn" asp-action="Goods" , asp-controller="Home"><h1>Наши изделия</h1></a>
         <div class="row mt-5 mb-5">
             @foreach (var cake in Model)
             {
                 <div class="col-lg-4" name="clickable">
-                    <div style="padding: 30px">
+                    <div>
                         <div class="shading">
                             <a class="cake" asp-action="Cake" , asp-controller="Home" asp-route-id="@cake.Id">
                                 <img class="cake" src="~/Resources/@cake.Image" />
                                 <br />
                                 @cake.Name
                                 <p style="font-size: 14px; font-weight:normal;">@cake.ShortDesc</p>
+                                <p style="font-size: 14px; font-weight:normal;">Цена: @cake.Price ₽</p>
                             </a>
                         </div>
-                        <br />
                     </div>
                 </div>
             }

@@ -46,11 +46,11 @@ namespace CandyShop.Controllers
             }
         }
         [HttpPost]
-        public IActionResult AddCake(string name, string shortDesc, string longDesc, IFormFile resource)
+        public IActionResult AddCake(string name, string shortDesc, string longDesc, IFormFile resource, int price)
         {
             string fileName = resource.FileName;
             resource.CopyTo(new FileStream("wwwroot/Resources/" + fileName, FileMode.Create));
-            db.Cakes.Add(new Cake { Name = name, ShortDesc = shortDesc, LongDesc = longDesc, Image = fileName });
+            db.Cakes.Add(new Cake { Name = name, ShortDesc = shortDesc, LongDesc = longDesc, Image = fileName, Price = price });
             db.SaveChanges();
             return RedirectToAction("Goods", "Home");
         }

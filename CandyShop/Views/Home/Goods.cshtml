@@ -17,14 +17,15 @@
                             <br />
                             @cake.Name
                             <p style="font-size: 18px; font-weight:normal;">@cake.ShortDesc</p>
+                            <p style="font-size: 18px; font-weight:normal;">Цена: @cake.Price ₽</p>
                         </a>
                         @if (authenticated)
                         {
                             <div class="button" style="position: absolute; right: 10%">
                                 <a style="display:inline-block;" class="btn" asp-action="Delete" asp-controller="Home" asp-route-id="@cake.Id" asp-route-act="Goods">Удалить</a>
                             </div>
+                            <br />
                         }
-                        <br />
                     </div>
                     <br />
                 </div>
