@@ -23,7 +23,8 @@ namespace CandyShop.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var model = db.Cakes.ToList();
+            return View(model);
         }
         public IActionResult Goods()
         {
@@ -45,13 +46,27 @@ namespace CandyShop.Controllers
             }
         }
         [HttpPost]
-        public IActionResult AddCake(string name, string shortDesc, string longDesc, IFormFile resource)
+        public IActionResult AddCake(string name, string shortDesc, string longDesc, IFormFile resource, int price)
         {
             string fileName = resource.FileName;
             resource.CopyTo(new FileStream("wwwroot/Resources/" + fileName, FileMode.Create));
-            db.Cakes.Add(new Cake { Name = name, ShortDesc = shortDesc, LongDesc = longDesc, Image = fileName });
+            db.Cakes.Add(new Cake { Name = name, ShortDesc = shortDesc, LongDesc = longDesc, Image = fileName, Price = price });
             db.SaveChanges();
             return RedirectToAction("Goods", "Home");
+        }
+        [Authorize]
+        public IActionResult Delete(int id, string act)
+        {
+            //Удаление изображения
+            string fileName = db.Cakes.Single(u => u.Id == id).Image;
+            if (System.IO.File.Exists("wwwroot/Resources/" + fileName))
+            {
+                System.IO.File.Delete("wwwroot/Resources/" + fileName);
+            }
+            //Удаление из базы данных
+            db.Cakes.Remove(db.Cakes.Single(u => u.Id == id));
+            db.SaveChanges();
+            return RedirectToAction(act, "Home");
         }
 
         public IActionResult Cake(int id)

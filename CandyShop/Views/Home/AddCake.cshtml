@@ -7,22 +7,27 @@
     <form asp-action="AddCake" asp-controller="Home" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <h5>Название торта</h5>
-            <input id="name" name="name" type="text" required autocomplete="off"/>
+            <input id="name" name="name" type="text" required autocomplete="off" />
             <br />
         </div>
         <div class="form-group">
             <h5>Короткое описание</h5>
-            <input id="shortDesc" name="shortDesc" type="text" required autocomplete="off" />
+            <input style="width:50%" id="shortDesc" name="shortDesc" type="text" required autocomplete="off" />
             <br />
         </div>
         <div class="form-group">
             <h5>Полное описание</h5>
-            <textarea id="longDesc" name="longDesc" required ></textarea>
+            <textarea class="inpt" id="longDesc" name="longDesc" required></textarea>
             <br />
         </div>
         <div class="form-group">
             <h5>Изображение</h5>
             <input id="resource" name="resource" type="file" required />
+            <br />
+        </div>
+        <div class="form-group">
+            <h5>Цена</h5>
+            <input id="price" name="price" type="text" required autocomplete="off" />
             <br />
         </div>
         <input type="submit" id="sendBtn" value="Отправить" />
